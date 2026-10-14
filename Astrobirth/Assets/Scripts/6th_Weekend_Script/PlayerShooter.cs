@@ -10,8 +10,16 @@ public class PlayerShooter : MonoBehaviour
 
     float lastFireTime = -999f;
 
+    public PlayerMelee playerMelee;
+
+    private void Awake()
+    {
+        playerMelee = GetComponent<PlayerMelee>();
+    }
+
     public void OnAttack(InputValue value)
     {
+        if (playerMelee.canMeleeAttack) return;
         if (Time.timeScale == 0f) return;
         if (Time.time < lastFireTime + fireCooldown) return;
         lastFireTime = Time.time;
