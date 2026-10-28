@@ -82,8 +82,12 @@ public class AstronantController : MonoBehaviour
             speed = moveSpeed * 2f;
             targetZ = -8f;
         }
+        else
+        {
+            targetZ = -6f;
+        }
 
-        move = move * speed;
+            move = move * speed;
         move.y = verticalVelocity;
 
         if (cameraTransform != null)

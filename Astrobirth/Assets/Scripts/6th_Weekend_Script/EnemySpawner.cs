@@ -7,6 +7,9 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public float spawnInterval = 1.0f;
 
+    public GameObject[] enemyPrefabs;
+
+
     [Header("스폰 범위 (선택사항)")]
     public float spawnRadius = 10f;
 
@@ -26,9 +29,10 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
+        int e = Random.Range(0, enemyPrefabs.Length);
         Vector2 randomCircle = Random.insideUnitCircle * spawnRadius;
         Vector3 spawnPos = transform.position + new Vector3(randomCircle.x, 0.5f, randomCircle.y);
 
-        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        Instantiate(enemyPrefabs[e], spawnPos, Quaternion.identity);
     }
 }
